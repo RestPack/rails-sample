@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= @title || "Simple Rails App" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+    <link href="//netdna.bootstrapcdn.com/bootswatch/2.3.0/united/bootstrap.min.css" rel="stylesheet">
+  </head>
+
+  <body class="preview">
+
+ <div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container-fluid">
+       <a class="brand" href="../">Simple Rails App</a>
+       
+       <ul class="nav" id="main-menu-left">
+         <li><a href="/groups">Groups</a></li>
+       </ul>
+       
+       <ul class="nav pull-right" id="main-menu-right">
+         <% if @restpack.is_authenticated? %>         
+           <li>
+              <a>Hi <%= @restpack.user[:name] %></a>
+           </li>
+           <li>
+             <a style="padding: 5px 10px 5px 10px"><img src="<%= @restpack.user[:avatar] %>" width="30" height="30"style="border: 1px solid white; background-color: rgb(255, 151, 18)" /></a>
+           </li>
+           <li>
+              <a href="<%= @restpack.logout_url(@restpack.request.url) %>">Logout</a>
+           </li>
+         <% else %>
+           <li>
+              <a href="<%= @restpack.login_url(:twitter, @restpack.request.url) %>">Login with Twitter</a>
+           </li>
+           <li>
+              <a href="<%= @restpack.login_url(:google_oauth2, @restpack.request.url) %>">Login with Google</a>
+           </li>
+         <% end %>
+        </ul>
+     </div>
+   </div>
+ </div>
+
+ <div class="container-fluid" style="margin-top: 90px; margin-left: 40px; margin-right: 40px">
+    <header class="jumbotron subhead" id="overview">
+      <div class="row">
+        
+        <% if flash[:notice] %>
+          <div class="alert alert-info">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+        
+        <% if flash[:error] %>
+          <div class="alert alert-error">
+            <%= flash[:error] %>
+          </div>
+        <% end %>
+        
+        <% if flash[:success] %>
+          <div class="alert alert-success">
+            <%= flash[:success] %>
+          </div>
+        <% end %>
+
+        
+        <div>
+          <%= yield %>
+        </div>
+      </div>
+    </header>
+
+    <br><br><br><br>
+
+    <hr>
+
+    <footer id="footer">
+      <p class="pull-right"><a href="#top">Back to top</a></p>
+    </footer>
+
+  </div>
+  </body>
+</html>

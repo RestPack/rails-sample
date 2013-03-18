@@ -1,0 +1,54 @@
+
+<div class="container-fluid">
+  <h2>
+    Your Groups
+    <span style="padding-left: 10px">
+      <a href="/groups/new" class="btn btn-mini btn-primary">New Group</a>
+    </span>
+  </h2>
+  <hr />
+  <div class="row-fluid">
+    <div class="span8">
+      <div class="row-fluid">
+        <% if @groups.any? %>
+        <table class="table table-bordered table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @groups.each do |group| %>
+              <tr>
+                <td><a href="/groups/<%= group.id %>"><%= group.name %></a></td>
+                <td><%= group.description %></td>
+              </tr>
+            <% end %>
+            
+          </tbody>
+        </table>
+        <% else %>
+          <h5>You are not a member of any groups</h5>
+        <% end %>
+      </div>
+    </div>
+    <div class="span4 alert alert-success">      
+      <h3>Got an invite code?</h3>
+      
+      <form class="form-inline" method="post" action="/groups/join">
+        <div class="control-group">
+          <div class="controls">
+            <input name="access_key" class="input-large" type="text" placeholder="Your invite code">
+          </div>
+        </div>
+
+        <div class="control-group">
+          <div class="controls">
+            <button type="submit" class="btn btn-mini btn-inverse">Let me in!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

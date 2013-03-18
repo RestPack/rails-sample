@@ -1,0 +1,54 @@
+<style>
+  .owner h4 { color: green; }
+</style>
+
+<div class="container-fluid">
+  
+  <div class="hero-unit" style="padding: 14px">
+    <h2 style="line-height: 1em; padding-top: 0"><%= @group.name %></h2>
+    <p><%= @group.description %></p>
+  </div>
+  
+  <div class="row-fluid">
+    <div class="span8">
+      
+      <div class="row-fluid">
+        <ul class="thumbnails">
+          <% @response[:users].each do |user| %>
+          <li class="span4">
+            <div class="thumbnail" style="min-width: 70px">
+              <img style="width: 100%; height: 100%;" src="<%= user[:avatar] %>" />
+              
+              <div class="caption <%= @group.created_by_user_id == user[:id] ? "owner" : "" %>">
+                <h4><%= user[:name] %></h5>
+              </div>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <div class="span4">
+      <h4>
+        Invitation Codes:
+        <span style="float:right;font-size:0.6em">
+          <a href="/groups/<%= @group.id %>/invitations/new" class="btn btn-mini btn-primary">New</a>
+        </span>
+      </h4>
+      <hr />
+      
+      <% if @group.invitations.any? %>
+        <% @group.invitations.each do |invitation| %>
+          <div class="alert alert-success">
+            <span style="float:right; margin-right: -18px"><%= invitation.remaining_uses %> uses left</span>
+            <strong><%= invitation.access_key %></strong>
+          
+          </div>
+        <% end %>
+      <% else %>
+        <h6>There are no invite codes for this group</h6>
+      <% end %>
+    </div>
+  </div>
+</div>
+

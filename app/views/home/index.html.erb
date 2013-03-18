@@ -1,0 +1,13 @@
+<div>
+  Welcome to the sample RestPack Rails app
+
+  <hr />
+  <pre>
+    <%= @restpack.debug_info %>
+  </pre>
+  
+  <hr />
+  <div style="margin-top: 1000px">
+    <%= Maruku.new(@restpack.debug_info).to_html.html_safe %>
+  </div>
+</div>

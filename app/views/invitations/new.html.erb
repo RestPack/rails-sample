@@ -1,0 +1,38 @@
+<h3>Create an Invitation to the <strong><%= @group.name %></strong> Group:</h3>
+
+<hr />
+
+<form class="form-horizontal" method="post" action="/groups/<%= @group.id %>/invitations">
+  <div class="control-group">
+    <label class="control-label">Invite Code Length</label>
+    <div class="controls">
+      <select name="access_key_length">
+        <option>4</option>
+        <option>6</option>
+        <option selected>8</option>
+        <option>16</option>
+        <option>32</option>
+      </select>
+      <span class="help-block">The length of the generated invite code (eg. <strong>FR45P42GJ</strong>)</span>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <label class="control-label">Invite Uses</label>
+    <div class="controls">
+      <select name="remaining_uses">
+        <option selected>1</option>
+        <% 2.upto(200) do |i| %>
+          <option><%= i %></option>
+        <% end %>
+      </select>
+      <span class="help-block">How many people may use this invitation?</span>
+    </div>
+  </div>
+  
+  <div class="control-group">
+    <div class="controls">
+      <button type="submit" class="btn">Create Invitation</button>
+    </div>
+  </div>
+</form>
