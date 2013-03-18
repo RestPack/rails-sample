@@ -21,4 +21,8 @@ group :development do
   gem 'foreman', '~> 0.62.0'
 end
 
+group :production do
+  gem 'pg', '~> 0.14.1'
+end
+
 gem 'jquery-rails'

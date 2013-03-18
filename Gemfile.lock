@@ -61,6 +61,7 @@ GEM
       syntax (>= 1.0.0)
     mime-types (1.21)
     multi_json (1.7.1)
+    pg (0.14.1)
     polyglot (0.3.3)
     public_suffix (1.2.0)
     rack (1.4.5)
@@ -139,6 +140,7 @@ DEPENDENCIES
   foreman (~> 0.62.0)
   jquery-rails
   maruku
+  pg (~> 0.14.1)
   rails (= 3.2.12)
   rake (~> 10.0.3)
   restpack-group-client (~> 0.1.0)
