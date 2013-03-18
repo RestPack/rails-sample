@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
-gem "restpack-web", "~> 0.2.25"
+gem "restpack-web", "~> 0.2.26"
 gem 'restpack-group-client', '~> 0.1.0'
 
 gem 'unicorn', '~> 4.6.2'
