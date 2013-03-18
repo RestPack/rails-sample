@@ -2,10 +2,10 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.12'
 
-
-gem "restpack-web", "~> 0.2.22"
+gem "restpack-web", "~> 0.2.25"
 gem 'restpack-group-client', '~> 0.1.0'
 
+gem 'unicorn', '~> 4.6.2'
 gem 'maruku'
 
 group :assets do
@@ -19,7 +19,6 @@ group :development do
   gem 'rake', '~> 10.0.3'
   gem 'sqlite3', '~> 1.3.7'
   gem 'foreman', '~> 0.62.0'
-  gem 'thin', '~> 1.5.0'
 end
 
 gem 'jquery-rails'
