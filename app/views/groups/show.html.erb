@@ -12,11 +12,11 @@
   <div class="row-fluid">
     <div class="span8">
       
-      <% @response[:users].each_slice(3) do |slice| %>
+      <% @response[:users].each_slice(4) do |slice| %>
       <div class="row-fluid">
         <ul class="thumbnails">
           <% slice.each do |user| %>
-          <li class="span3">
+          <li class="span2">
             <div class="thumbnail" style="min-width: 70px">
               <img style="width: 100%; height: 100%;" src="<%= user[:avatar] %>" />
               
