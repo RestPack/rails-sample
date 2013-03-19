@@ -12,9 +12,10 @@
   <div class="row-fluid">
     <div class="span8">
       
+      <% @response[:users].each_slice(3) do |slice| %>
       <div class="row-fluid">
         <ul class="thumbnails">
-          <% @response[:users].each do |user| %>
+          <% slice.each do |user| %>
           <li class="span3">
             <div class="thumbnail" style="min-width: 70px">
               <img style="width: 100%; height: 100%;" src="<%= user[:avatar] %>" />
@@ -27,7 +28,8 @@
           <% end %>
         </ul>
       </div>
-    </div>
+      <% end %>
+
     <div class="span4">
       <h4>
         Invitation Codes:
